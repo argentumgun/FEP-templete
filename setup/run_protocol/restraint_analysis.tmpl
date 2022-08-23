@@ -1,0 +1,23 @@
+parm ../../complex.parm7
+trajin ../traj_imaged.nc
+
+list trajin
+
+# set anchor residues
+atominfo :1
+
+distance Distance %A% %a% out Distance.agr
+angle Angle_P %B% %A% %a% out Angle_P.agr
+angle Angle_L %A% %a% %b% out Angle_L.agr
+dihedral Dihedral_P %C% %B% %A% %a%  out Dihedral_P.agr
+dihedral Dihedral_M %B% %A% %a% %b%  out Dihedral_M.agr
+dihedral Dihedral_L %A% %a% %b% %c%  out Dihedral_L.agr
+list actions
+run
+writedata Dihedral_P.dat Dihedral_P
+writedata Dihedral_M.dat Dihedral_M
+writedata Dihedral_L.dat Dihedral_L
+writedata Angle_P.dat Angle_P
+writedata Angle_L.dat Angle_L
+writedata Distance.dat Distance
+quit

@@ -1,0 +1,12 @@
+mbar calculation
+ &cntrl
+   imin = 5,   ! Read in a trajectory for analysis
+   maxcyc = 1, ! the output file can be used to extract the energies
+   ntb = 1,    ! In order to read trajectories with box coordinates, ntb should be greater than 0.
+   nmropt = 1, ! NMR restraints and weight changes will be read
+ /
+ &ewald
+ / 
+ &wt type = 'END'
+ /
+ DISANG = dist_angel_dihedral.RST

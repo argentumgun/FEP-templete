@@ -1,0 +1,4 @@
+parm ../complex.parm7
+parmstrip :WAT|:Na+|:Cl-
+parmwrite out complex_no_water.parm7
+go

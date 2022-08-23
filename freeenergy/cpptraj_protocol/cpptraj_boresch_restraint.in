@@ -1,0 +1,18 @@
+parm ../../../../init_structure/complex.parm7
+trajin ../../../vdw_crg_one_step/*/ti001.nc
+
+distance Distance :48@CB :1@C21 out Distance.agr
+angle Angle_P :48@CA :48@CB :1@C21 out Angle_P.agr
+angle Angle_L :48@CB :1@C21 :1@N7 out Angle_L.agr
+dihedral Dihedral_P :48@C :48@CA :48@CB :1@C21 range360 out Dihedral_P.agr
+dihedral Dihedral_M :48@CA :48@CB :1@C21 :1@N7 range360 out Dihedral_M.agr
+dihedral Dihedral_L :48@CB :1@C21 :1@N7 :1@C7 range360 out Dihedral_L.agr
+list actions
+run
+writedata Dihedral_P.dat Dihedral_P
+writedata Dihedral_M.dat Dihedral_M
+writedata Dihedral_L.dat Dihedral_L
+writedata Angle_P.dat Angle_P
+writedata Angle_L.dat Angle_L
+writedata Distance.dat Distance
+quit

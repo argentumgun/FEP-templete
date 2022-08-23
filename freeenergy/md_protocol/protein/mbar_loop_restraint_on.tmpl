@@ -1,0 +1,13 @@
+mbar calculation
+ &cntrl
+   imin = 5,   ! Read in a trajectory for analysis
+   maxcyc = 1, ! the output file can be used to extract the energies
+   ntb = 1,    ! In order to read trajectories with box coordinates, ntb should be greater than 0.
+   ntr = 1, restraint_wt = %RESTR%,
+   restraintmask = ':23-37@CA,N,C',       ! ti001
+   !restraintmask = ':26-34@CA,N,C',        ! ti002
+ /
+ &ewald
+ / 
+ &wt type = 'END'
+ /

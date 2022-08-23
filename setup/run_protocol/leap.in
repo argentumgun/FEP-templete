@@ -1,0 +1,32 @@
+source leaprc.gaff2
+source leaprc.protein.ff14SB
+source leaprc.water.tip3p
+
+MOL = loadmol2 lig.mol2
+loadamberparams lig.frcmod
+check MOL
+saveoff MOL lig.lib
+
+receptor = loadpdb /home1/wsp/CDK9/4BCF_fill.pqr
+
+com = combine {MOL receptor}
+
+solvateoct com TIP3PBOX 15.0
+
+check com
+
+addions com Cl- 70
+addions com Na+ 64
+
+check com
+
+saveamberparm com complex.parm7 complex.rst7
+savepdb com complex_water.pdb
+
+solvateoct MOL TIP3PBOX 15.0
+#addions MOL Cl- 6
+#addions MOL Na+ 6
+saveamberparm MOL lig.parm7 lig.rst7
+savepdb MOL lig_water.pdb
+
+quit

@@ -1,0 +1,32 @@
+parm ../complex.parm7
+trajin ../prod*.nc
+
+autoimage
+
+hbond contacts :1-332 avgout avg.dat series uuseries hbond.gnu nointramol
+go
+
+lifetime contacts[solutehb] out contacts-lifetime.dat
+go
+
+trajout traj_imaged.nc offset 10
+go
+
+dihedral Dihedral_PHE :32@C :32@CA :32@CB :32@CG range360 out Dihedral_PHE.agr
+
+rms ligand_rmsd :1&!@H= first out rmsd_ligand.agr mass
+
+rms loop_rmsd :27-35&!@H= first out rmsd_loop.agr mass
+
+rms phe :32&!@H= first out RMSD_PHE.agr mass
+
+rms rmsd_protein :2-332@CA,N,C first out PROTEIN.agr mass
+
+go
+
+writedata Dihedral_PHE.dat Dihedral_PHE
+writedata RMSD_LIGAND.dat ligand_rmsd
+writedata RMSD_LOOP.dat loop_rmsd
+writedata RMSD_PROTEIN.dat rmsd_protein
+
+quit

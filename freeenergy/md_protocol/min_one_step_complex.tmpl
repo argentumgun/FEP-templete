@@ -1,0 +1,22 @@
+minimisation
+ &cntrl
+   imin = 1, ntmin = 2,
+   maxcyc = 5000, ncyc=2500,
+   ntpr = 100, cut = 9.0,
+   igb = 0, ntxo=2,
+   ntr = 1, restraint_wt = 10.00,
+   restraintmask=':1-332',
+   
+   watnam='WAT',  ! Water residues are named WAT
+   owtnm='O',     ! Water oxygens are named O
+
+   icfe = 1, ifsc = 1, clambda = %L%, scalpha = 0.5, scbeta = 12.0,
+   logdvdl = 0,
+   timask1 = ':1', timask2 = '',
+   scmask1 = ':1', scmask2 = '',
+ /
+ &ewald
+ / 
+
+ DISANG = dist_angel_dihedral.RST
+ LISTOUT = POUT_MIN

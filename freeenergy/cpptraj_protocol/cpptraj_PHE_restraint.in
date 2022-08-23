@@ -1,0 +1,12 @@
+# 05/03/22 00:02:58
+parm ../../../../init_structure/complex.parm7
+trajin ../../../restraint/*/ti001.nc
+atominfo :32
+dihedral Dihedral_PHE :32@C :32@CA :32@CB :32@CG range360 out Dihedral_PHE.agr
+rms RMSD_phe_loop  :27-35@CA,N,C|:32&!@H= first out RMSD_PHE.agr mass
+rms ligand_rmsd :1&!@H= out RMSD_LIGAND.agr mass
+go
+writedata Dihedral_PHE.dat Dihedral_PHE
+writedata RMSD_LOOP.dat RMSD_phe_loop
+writedata RMSD_LIGAND.dat ligand_rmsd
+quit

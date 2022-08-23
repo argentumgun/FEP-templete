@@ -1,0 +1,24 @@
+parm ../../../complex.parm7
+trajin ../../../prod_5.nc
+reference ../../../prod_5.nc %Frame%
+trajout restraint_reference.rst7 onlyframes %Frame%
+
+list parm
+list trajin
+
+list reference
+
+help rst
+# Distance
+rst %A% %a% reference width 3 rk2 10 rk3 10 out middle.tmpl
+# Angle_P
+rst %B% %A% %a% reference width 180 rk2 11 rk3 11 out middle.tmpl
+# Angle_L
+rst %A% %a% %b% reference width 180 rk2 11 rk3 11 out middle.tmpl
+# Dihedral_P
+rst %C% %B% %A% %a% reference width 180 rk2 12 rk3 12 out middle.tmpl
+# Dihedral_M
+rst %B% %A% %a% %b% reference width 180 rk2 12 rk3 12 out middle.tmpl
+#Dihedral_L
+rst %A% %a% %b% %c% reference width 180 rk2 12 rk3 12 out middle.tmpl
+quit
