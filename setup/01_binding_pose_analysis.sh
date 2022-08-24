@@ -88,6 +88,8 @@ for pose in 1; do
     cd analysis
 
     cpptraj -i $top/run_protocol/RMSD.cpptraj > RMSD.log
+    cpptraj -i $top/run_protocol/new_parm.cpptraj
+    cpptraj -i $top/run_protocol/save_space.cpptraj
 
     cd $top
     
