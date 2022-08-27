@@ -7,7 +7,4 @@ strip :Cl-
 rms fit :2-332
 trajout nowater.nc
 go
-parmstrip :WAT|:Na+|Cl-
-parmwrite out complex_no_water.prmtop
-go
 quit
