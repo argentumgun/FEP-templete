@@ -19,25 +19,7 @@ fi
 
 cd ${top}/binding_pose_MD/${pose}/analysis/Select_Reference_Frame
 
-# # reference frame
-# Frame='3'
-
-# #sed  -e "s/%A%/$ATOM_A/g" -e "s/%B%/$ATOM_B/g" -e "s/%C%/$ATOM_C/g" -e "s/%a%/$ATOM_a/g" -e "s/%b%/$ATOM_b/g" -e "s/%c%/$ATOM_c/g" $top/06_set_boresch_restraint.tmpl > $system_restraint.in
-
-# if [ \! -d $system_restraint$Frame ]; then
-#     mkdir $system_restraint$Frame
-# fi
-
-# cd $system_restraint$Frame
-
-# sed  -e "s/%Frame%/$Frame/g" -e "s/%A%/$ATOM_A/g" -e "s/%B%/$ATOM_B/g" -e "s/%C%/$ATOM_C/g" -e "s/%a%/$ATOM_a/g" -e "s/%b%/$ATOM_b/g" -e "s/%c%/$ATOM_c/g" $top/06_set_boresch_restraint.tmpl > $system_restraint.in
-
-# cpptraj -i $system_restraint.in > $system_restraint.log
-
-# sed -e "s/10.000000/%D%/g"  Boresch_FULL_restraint.DISANG > $system_restraint.tmpl
-
 for Frame in 1 2 3 4 5 6 7 8 9 10; do
-#for Frame in 1 ; do
     
     if [ \! -d $system_restraint$Frame ]; then
         mkdir $system_restraint$Frame

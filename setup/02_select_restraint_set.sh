@@ -4,7 +4,7 @@ top=$(pwd)
 pose=1
 
 # restraint group number
-set_No=7
+set_No=1
 
 system_restraint="restraint_set_${set_No}"
 
