@@ -2,7 +2,7 @@
 
 top=$(pwd)
 
-analysis_target="complex_5_20_200_200_restraint_loop_0.01"
+analysis_target="complex_1_20_200_200"
 
 cd $analysis_target
 

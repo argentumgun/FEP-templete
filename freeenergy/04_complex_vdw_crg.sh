@@ -9,7 +9,7 @@ k_dist=20
 k_ang=200
 k_rotate=200
 
-complex_part="complex_1_${k_dist}_${k_ang}_${k_rotate}_restraint_expand"
+complex_part="complex_1_${k_dist}_${k_ang}_${k_rotate}"
 #complex_part="complex"
 
 for system in $complex_part; do
