@@ -34,6 +34,6 @@ cd complex
 cpptraj -i $top/cpptraj_protocol/cpptraj_PHE_complex.in > cpptraj_complex.log
 cd ..
 
-# cd restraint
-# cpptraj -i $top/cpptraj_protocol/cpptraj_PHE_restraint.in > cpptraj_PHE_restraint.log
+cd restraint
+cpptraj -i $top/cpptraj_protocol/cpptraj_PHE_restraint.in > cpptraj_PHE_restraint.log
 

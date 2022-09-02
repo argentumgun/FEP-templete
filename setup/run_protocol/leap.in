@@ -11,6 +11,8 @@ receptor = loadpdb /home1/wsp/CDK9/4BCF_fill.pqr
 
 com = combine {MOL receptor}
 
+savepdb com complex.pdb
+
 solvateoct com TIP3PBOX 15.0
 
 check com
