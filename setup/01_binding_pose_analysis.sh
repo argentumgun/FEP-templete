@@ -31,6 +31,10 @@ for pose in 1; do
     echo "binding ligand : $ligand"
 
     echo "$(date "+%Y-%m-%d %H:%M:%S") GAUSS start"
+    # retain ligand coordinate
+    antechamber -i $ligand.pdb -fi pdb -o lig.com -fo gcrt
+    antechamber -i lig.com -fi gcrt -o lig.pdb -fo pdb
+    
     g16 $top/binding_pose_dir/$ligand.gjf
     #antechamber -i $top/binding_pose_dir/$ligand -fi pdb -o lig.com -fo gcrt
     echo "$(date "+%Y-%m-%d %H:%M:%S") antechamber start"

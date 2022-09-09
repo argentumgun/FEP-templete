@@ -9,7 +9,10 @@ saveoff MOL lig.lib
 
 receptor = loadpdb /home1/wsp/CDK9/4BCF_fill.pqr
 
-com = combine {MOL receptor}
+LIG = loadpdb lig.pdb
+check LIG
+
+com = combine {LIG receptor}
 
 savepdb com complex.pdb
 
@@ -25,10 +28,10 @@ check com
 saveamberparm com complex.parm7 complex.rst7
 savepdb com complex_water.pdb
 
-solvateoct MOL TIP3PBOX 15.0
-#addions MOL Cl- 6
-#addions MOL Na+ 6
-saveamberparm MOL lig.parm7 lig.rst7
-savepdb MOL lig_water.pdb
+solvateoct LIG TIP3PBOX 15.0
+#addions LIG Cl- 6
+#addions LIG Na+ 6
+saveamberparm LIG lig.parm7 lig.rst7
+savepdb LIG lig_water.pdb
 
 quit
