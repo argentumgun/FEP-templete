@@ -10,42 +10,16 @@ k_ang=200
 k_rotate=200
 
 complex_part="complex_1_${k_dist}_${k_ang}_${k_rotate}"
-#complex_part="complex"
 
 for system in $complex_part; do
-
-  if [ \! -d $system ]; then
-    mkdir $system
-  fi
 
   cd $system
   
   for step in vdw_crg_one_step; do
-    if [ \! -d $step ]; then
-      mkdir $step
-    fi
 
     cd $step
 
-    for w in 0.0 0.01 0.025 0.05 0.075 0.1 0.15 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0; do
-      if [ \! -d $w ]; then
-        mkdir $w
-      fi
-
-      sed -e "s/%L%/$w/"  $top/md_protocol/min_one_step_complex.tmpl > $w/min.in
-      sed -e "s/%L%/$w/"  $top/md_protocol/heat_one_step_complex.tmpl > $w/heat.in
-      sed -e "s/%L%/$w/"  $top/md_protocol/prep_one_step_complex.tmpl > $w/prep.in
-      sed -e "s/%L%/$w/"  $top/md_protocol/prod_one_step_complex.tmpl > $w/ti.in
-      sed -e "s/%D%/${k_dist}/g" -e "s/%A%/${k_ang}/g" -e "s/%T%/${k_rotate}/g" $top/init_structure/Boresch_restraint.tmpl > $w/dist_angel_dihedral.RST
-
-      (
-        cd $w
-        ln -sf $top/init_structure/complex.parm7 ti.parm7
-        ln -sf $top/init_structure/restraint_reference.rst7 ti.rst7
-      )
-    done
-
-    for w in 0.7 0.8 0.9 1.0 0.0 0.01 0.025 0.05 0.075 ; do
+    for w in 0.1 0.15 0.2 0.3 0.4 0.5 0.6; do
       cd $w
 
       current_dir=$(pwd)
