@@ -63,7 +63,7 @@ for pose in 1; do
 
     # 1 ns each step
     cnt=1
-    cntmax=5
+    cntmax=10
     prod_step='prod'
 
     while (($cnt <= $cntmax))
