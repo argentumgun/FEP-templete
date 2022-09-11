@@ -19,7 +19,7 @@ for system in $complex_part; do
 
     cd $step
 
-    for w in 0.1 0.15 0.2 0.3 0.4 0.5 0.6; do
+    for w in 0.075 0.1 0.15 0.2 0.3 0.4 0.5 0.6; do
       cd $w
 
       current_dir=$(pwd)
