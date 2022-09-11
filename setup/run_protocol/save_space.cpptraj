@@ -6,5 +6,6 @@ strip :Na+
 strip :Cl-
 rms fit :2-332
 trajout nowater.nc
+trajout nowater.mdcrd crd
 go
 quit
