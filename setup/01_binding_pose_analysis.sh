@@ -27,6 +27,7 @@ for pose in 1; do
     echo "current working folder:"
     pwd
     
+    # ligand name
     ligand="ligand_pose_$pose"
     echo "binding ligand : $ligand"
 
