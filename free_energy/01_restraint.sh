@@ -59,9 +59,9 @@ for w in 0.0 0.01 0.025 0.05 0.075 0.1 0.15 0.2 0.35 0.5 0.75 1.0; do
   echo " $(date "+%Y-%m-%d %H:%M:%S") minimization"
   $mpirun pmemd.MPI -i min.in -c ti.rst7 -ref ti.rst7 -p ti.parm7 -O -o min.out -inf min.info -r min.rst7 -l min.log
   echo " $(date "+%Y-%m-%d %H:%M:%S") heating"
-  pmemd.cuda -i heat.in -c min.rst7 -ref min.rst7 -p ti.parm7 -O -o heat.out -inf heat.info -r heat.rst7 -x heat.nc -l heat.log
+  pmemd.cuda -i heat.in -c min.rst7 -ref ti.rst7 -p ti.parm7 -O -o heat.out -inf heat.info -r heat.rst7 -x heat.nc -l heat.log
   echo " $(date "+%Y-%m-%d %H:%M:%S") prep"
-  pmemd.cuda -i prep.in -c heat.rst7 -ref heat.rst7 -p ti.parm7 -O -o prep.out -inf prep.info -r prep.rst7 -x prep.nc -l prep.log
+  pmemd.cuda -i prep.in -c heat.rst7 -ref ti.rst7 -p ti.parm7 -O -o prep.out -inf prep.info -r prep.rst7 -x prep.nc -l prep.log
   echo " $(date "+%Y-%m-%d %H:%M:%S") production"
   pmemd.cuda -i ti.in -c prep.rst7 -p ti.parm7 -O -o ti001.out -inf ti001.info -r ti001.rst7 -x ti001.nc -l ti001.log
 
