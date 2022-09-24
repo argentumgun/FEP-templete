@@ -37,10 +37,11 @@ for pose in 1; do
     antechamber -i lig.com -fi gcrt -o lig.pdb -fo pdb
 
     echo "$(date "+%Y-%m-%d %H:%M:%S") GAUSS start"
-    g16 $top/binding_pose_dir/$ligand.gjf
+    cp $top/binding_pose_dir/$ligand.gjf .
+    g16 $ligand.gjf
     #antechamber -i $top/binding_pose_dir/$ligand -fi pdb -o lig.com -fo gcrt
     echo "$(date "+%Y-%m-%d %H:%M:%S") antechamber: ligang parameter"
-    antechamber -i $top/binding_pose_dir/$ligand.log -fi gout -o lig.mol2 -fo mol2 -c bcc -at gaff2
+    antechamber -i $ligand.log -fi gout -o lig.mol2 -fo mol2 -c bcc -at gaff2
     parmchk2 -i lig.mol2 -f mol2 -o lig.frcmod -s gaff2
 
     echo "running tleap"
