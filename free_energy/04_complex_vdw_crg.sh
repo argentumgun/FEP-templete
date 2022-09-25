@@ -4,13 +4,15 @@ mdrun="pmemd.cuda"
 
 top=$(pwd)
 
-# restraint force constant
-k_dist=20
-k_ang=200
-k_rotate=200
+# repate number
+round_NO=1
 
-complex_part="complex_1_${k_dist}_${k_ang}_${k_rotate}"
-#complex_part="complex"
+# restraint force constant
+k_dist=10
+k_ang=100
+k_rotate=100
+
+complex_part="complex_${round_NO}_${k_dist}_${k_ang}_${k_rotate}"
 
 for system in $complex_part; do
 

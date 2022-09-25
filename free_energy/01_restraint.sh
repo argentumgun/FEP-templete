@@ -6,9 +6,9 @@ sander="sander.MPI"
 top=$(pwd)
 
 # restraint force constant
-k_dist=20
-k_ang=200
-k_rotate=200
+k_dist=10
+k_ang=100
+k_rotate=100
 
 complex_part="complex_1_${k_dist}_${k_ang}_${k_rotate}"
 
