@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export CUDA_VISIBLE_DEVICES='1'
+export CUDA_VISIBLE_DEVICES='0'
 
 mdrun="pmemd.cuda"
 mpirun="mpirun -np 16"
