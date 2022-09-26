@@ -1,5 +1,7 @@
 #!/bin/sh
 
+export CUDA_VISIBLE_DEVICES='1'
+
 mdrun="pmemd.cuda"
 
 top=$(pwd)
