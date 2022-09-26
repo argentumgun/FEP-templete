@@ -1,4 +1,7 @@
 #!/usr/bin/bash
+
+export CUDA_VISIBLE_DEVICES='0'
+
 mdrun=$AMBERHOME/bin/pmemd.MPI
 
 # test mutil binding pose
