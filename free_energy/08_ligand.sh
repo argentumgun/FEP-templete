@@ -4,7 +4,7 @@ top=$(pwd)
 mdrun="pmemd.cuda"
 
 # repate number
-round_NO = 1
+round_NO=1
 
 # restraint force constant
 k_dist=10
