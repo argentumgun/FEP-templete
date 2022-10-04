@@ -2,8 +2,8 @@ Minimization input file in explicit solvent
  &cntrl
     ! Minimization options
     imin=1,        ! Turn on minimization
-    maxcyc=5000,   ! Maximum number of minimization cycles
-    ncyc=2500,     ! 100 steepest-descent steps, better for strained systems
+    maxcyc=10000,   ! Maximum number of minimization cycles
+    ncyc=5000,     ! 100 steepest-descent steps, better for strained systems
 
     ! Potential energy function options
     cut=9.0,       ! nonbonded cutoff, in Angstroms
@@ -15,7 +15,7 @@ Minimization input file in explicit solvent
     ! Restraint options
     ntr=1,         ! Positional restraints for proteins, sugars, and ligands
     restraint_wt=10.0,
-    restraintmask=':1-332',
+    restraintmask=':1-466',
 
     ! Set water atom/residue names for SETTLE recognition
     watnam='WAT',  ! Water residues are named WAT

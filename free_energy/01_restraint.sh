@@ -3,7 +3,7 @@
 export CUDA_VISIBLE_DEVICES='0'
 
 mdrun="pmemd.cuda"
-mpirun="mpirun -np 16"
+mpirun="mpirun -np 8"
 sander="sander.MPI"
 top=$(pwd)
 
