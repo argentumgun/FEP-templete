@@ -1,0 +1,9 @@
+# strip :WAT|:Na+|:Cl-
+# image center on ligand :1
+
+parm ../restraint/0.0/ti.parm7
+trajin ../restraint/*/ti001.nc
+autoimage :1
+trajout restraint_imaged.nc
+go
+quit

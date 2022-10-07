@@ -82,41 +82,16 @@ fi
 
 cd post_processing
 
-for w in 0.0 0.01 0.025 0.05 0.075 0.1 0.15 0.2 0.35 0.5 0.75 1.0; do
-  if [ \! -d $w ]; then
-    mkdir $w
-  fi
+# image traj
+cpptraj -i ${top}/cpptraj_protocol/autoimage_restraint_traj.cpptraj
 
-  # change weight
-  Distance=`echo "scale=3; ${k_dist} * $w"|bc`
-  Angel=`echo "scale=3; ${k_ang} * $w"|bc`
-  Torsion=`echo "scale=3; ${k_rotate} * $w"|bc`
+# restraint weight state w
+sed -e "s/%D%/${k_dist}/g" -e "s/%A%/${k_ang}/g" -e "s/%T%/${k_rotate}/g"  $top/init_structure/Boresch_restraint.tmpl > dist_angel_dihedral.RST
   
-  # restraint weight state w
-  sed -e "s/%D%/$Distance/g" -e "s/%A%/$Angel/g" -e "s/%T%/$Torsion/g"  $top/init_structure/Boresch_restraint.tmpl > $w/dist_angel_dihedral.RST
-  
-  (
-    cd $w
-    ln -sf $top/init_structure/complex.parm7 ti.parm7
-    ln -sf $top/init_structure/restraint_reference.rst7 restraint_reference.rst7
-    ln -sf $top/md_protocol/restraint_mbar_in.tmpl mbar.in
-  )
+ln -sf $top/init_structure/complex.parm7 ti.parm7
+ln -sf $top/init_structure/restraint_reference.rst7 restraint_reference.rst7
+ln -sf $top/md_protocol/restraint_mbar_in.tmpl mbar.in
 
-done
+echo " $(date "+%Y-%m-%d %H:%M:%S") Calaulate all samples in MBAR state lambda = 1.0"
 
-# calculate MBAR state
-for w in 0.0 0.01 0.025 0.05 0.075 0.1 0.15 0.2 0.35 0.5 0.75 1.0; do
-  cd $w 
-
-    echo " $(date "+%Y-%m-%d %H:%M:%S") current MBAR state : ${w} "
-
-    for s in 0.0 0.01 0.025 0.05 0.075 0.1 0.15 0.2 0.35 0.5 0.75 1.0; do
-
-      echo " $(date "+%Y-%m-%d %H:%M:%S") current working dir: postprocessing restriant ${w} - ${s}"
-      echo "   processing  mdcrd:  ${top}/${complex_part}/restraint/${s}/ti001.nc"
-
-      $mpirun $sander -i mbar.in -O -o mbar_${w}_${s}.out -p ti.parm7 -c restraint_reference.rst7 -y ${top}/${complex_part}/restraint/$s/ti001.nc
-
-    done
-  cd ..
-done
+mpirun -np 8 sander.MPI -i mbar.in -O -o mbar_state_1.0.out -p ti.parm7 -c restraint_reference.rst7 -y restraint_imaged.nc
