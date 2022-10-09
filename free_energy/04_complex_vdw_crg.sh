@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo "SETING COMPELX ALCHEMICAL SETP AND RUN 0.0-0.4 10 WINDOW"
+
 export CUDA_VISIBLE_DEVICES='1'
 
 mdrun="pmemd.cuda"

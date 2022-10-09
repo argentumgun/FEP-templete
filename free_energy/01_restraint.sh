@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo "SET UP AND RUN ADDING RESTRAINT STEP"
+
 export CUDA_VISIBLE_DEVICES='0'
 
 mdrun="pmemd.cuda"
@@ -95,3 +97,6 @@ ln -sf $top/md_protocol/restraint_mbar_in.tmpl mbar.in
 echo " $(date "+%Y-%m-%d %H:%M:%S") Calaulate all samples in MBAR state lambda = 1.0"
 
 mpirun -np 8 sander.MPI -i mbar.in -O -o mbar_state_1.0.out -p ti.parm7 -c restraint_reference.rst7 -y restraint_imaged.nc
+
+# delete atuoimage traj
+rm restraint_imaged.nc

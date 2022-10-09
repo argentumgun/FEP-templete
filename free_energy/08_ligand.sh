@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo "SETING LIGAND ALCHEMICAL SETP AND RUN 0.0-1.0 20 WINDOW"
+
 export CUDA_VISIBLE_DEVICES='1'
 
 top=$(pwd)
