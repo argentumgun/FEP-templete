@@ -2,7 +2,7 @@
 
 echo "COMPELX ALCHEMICAL SETP AND RUN 0.5-1.0 10 WINDOW"
 
-export CUDA_VISIBLE_DEVICES='1'
+export CUDA_VISIBLE_DEVICES='0'
 
 mdrun="pmemd.cuda"
 

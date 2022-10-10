@@ -5,7 +5,7 @@ echo "SET UP AND RUN ADDING RESTRAINT STEP"
 export CUDA_VISIBLE_DEVICES='0'
 
 mdrun="pmemd.cuda"
-mpirun="mpirun -np 8"
+mpirun="mpirun -np 4"
 sander="sander.MPI"
 top=$(pwd)
 

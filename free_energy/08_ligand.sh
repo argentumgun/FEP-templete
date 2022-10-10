@@ -50,7 +50,7 @@ for w in 0.0 0.01 0.025 0.05 0.075 0.1 0.15 0.2 0.3 0.4 0.5 0.6 0.65 0.7 0.75 0.
   echo " $(date "+%Y-%m-%d %H:%M:%S") current working dir:  $current_dir"
 
   echo " $(date "+%Y-%m-%d %H:%M:%S") MINIMIZATION"
-  mpirun -np 8 pmemd.MPI -i min.in -c ti.rst7 -ref ti.rst7 -p ti.parm7 -O -o min.out -inf min.info -r min.rst7 -l min.log
+  mpirun -np 4 pmemd.MPI -i min.in -c ti.rst7 -ref ti.rst7 -p ti.parm7 -O -o min.out -inf min.info -r min.rst7 -l min.log
 
   echo " $(date "+%Y-%m-%d %H:%M:%S") HEAT"
   $mdrun -i heat.in -c min.rst7 -ref ti.rst7 -p ti.parm7 -O -o heat.out -inf heat.info -r heat.rst7 -x heat.nc -l heat.log
