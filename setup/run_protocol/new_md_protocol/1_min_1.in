@@ -9,3 +9,4 @@ Minimize the added water and ions
   restraint_wt = 100.,
   ioutfm=1, ntxo=2,
  /
+ 

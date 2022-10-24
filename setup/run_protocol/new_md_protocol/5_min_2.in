@@ -8,3 +8,4 @@ Minimize the system with restraints just on the backbone of the molecule
   ntr=1, restraintmask="@CA,N,C", restraint_wt=10.
   ioutfm=1, ntxo=2,
  /
+ 

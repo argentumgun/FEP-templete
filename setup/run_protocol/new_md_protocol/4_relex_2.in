@@ -11,3 +11,4 @@ Lower the restraints on the system
   ntr=1, restraintmask=':1-332', restraint_wt=10.
   ioutfm=1, ntxo=2,
  /
+ 

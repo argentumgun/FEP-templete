@@ -11,3 +11,4 @@ Relax the system at a constant pressure
   ntr=1, restraintmask=':1-332', restraint_wt=100.
   ioutfm=1, ntxo=2,
  /
+ 

@@ -11,3 +11,4 @@ Relax system at a constant pressure with backbone restraints
   ntr=1, restraintmask="@CA,N,C", restraint_wt=10.
   ioutfm=1, ntxo=2,
  /
+ 
