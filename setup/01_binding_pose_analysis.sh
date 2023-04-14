@@ -35,9 +35,9 @@ for pose in 1; do
     echo "binding ligand : $ligand"
 
     # retain ligand coordinate
-    echo "$(date "+%Y-%m-%d %H:%M:%S") antechamber: convert ligand atom name to gcrt mode"
-    antechamber -i $top/binding_pose_dir/$ligand.pdb -fi pdb -o lig.com -fo gcrt
-    antechamber -i lig.com -fi gcrt -o lig.pdb -fo pdb
+    # echo "$(date "+%Y-%m-%d %H:%M:%S") antechamber: convert ligand atom name to gcrt mode"
+    # antechamber -i $top/binding_pose_dir/$ligand.pdb -fi pdb -o lig.com -fo gcrt
+    # antechamber -i lig.com -fi gcrt -o lig.pdb -fo pdb
 
     echo "$(date "+%Y-%m-%d %H:%M:%S") GAUSS start"
     cp $top/binding_pose_dir/$ligand.gjf .
@@ -120,6 +120,7 @@ for pose in 1; do
         
         echo "$(date "+%Y-%m-%d %H:%M:%S") MD PRODUCTION : $cnt  ${istep}"
         echo "set prod_run:::  pcnt =  $pcnt  istep =  $istep  psetp = $pstep"
+
 
         pmemd.cuda -O -i $top/run_protocol/03_production.mdin -p complex.parm7 -c ${pstep}.rst7 -ref complex.rst7 -o ${istep}.mdout -r ${istep}.rst7 -inf ${istep}.mdinfo -x ${istep}.nc
 
