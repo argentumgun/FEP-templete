@@ -128,6 +128,31 @@ for pose in 1; do
         
     done
 
+    echo "rename prod_file"
+
+    for file in prod_*; do
+        if [ -f "$file" ]; then  # 只处理普通文件，排除目录和其他特殊文件
+            
+            #获取文件名与文件类型
+            name=`echo ${file%%.*}`
+            prifx=`echo ${name%%\_*}`
+            file_type=`echo ${file##*.}`
+            #获取编号 
+            
+            #去掉先导零，避免重复移动文件
+            str_num=`echo $name | tr -cd "[0-9]"`
+            
+            num_str=$(echo -e $str_num | sed -r 's/0*([0-9])/\1/')
+            
+            #echo $num_str
+            if [ -n "$num_str" ]; then  # 如果数字部分不为空
+                num_str_padded=$(printf "%03d" "$num_str")  # 将数字转为三位数字格式
+                new_file="${prifx}_${num_str_padded}.${file_type}"  # 构造新文件名
+                mv "$file" "$new_file"  # 重命名文件
+            fi
+        fi
+    done
+
     if [ \! -d ./analysis ]; then
         mkdir ./analysis
         echo "mkdir analysis"
