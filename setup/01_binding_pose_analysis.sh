@@ -47,7 +47,7 @@ for pose in 1; do
     antechamber -i $ligand.log -fi gout -o lig.mol2 -fo mol2 -c bcc -at gaff2
     parmchk2 -i lig.mol2 -f mol2 -o lig.frcmod -s gaff2
 
-    echo " $(date "+%Y-%m-%d %H:%M:%S") running tleap"
+    echo "$(date "+%Y-%m-%d %H:%M:%S") running tleap"
     tleap -f $top/run_protocol/leap.in > tleap.log
     
     cd $top/binding_pose_MD
