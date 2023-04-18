@@ -2,6 +2,8 @@
 
 echo "RUN ADDING RESTRAINT STEP"
 
+export CUDA_VISIBLE_DEVICES='0'
+
 top=$(pwd)
 
 # repate number
