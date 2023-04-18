@@ -53,11 +53,10 @@ for system in $complex_part; do
     done
 
     for w in 0.0 0.01 0.025 0.05 0.075 0.1 0.15 0.2 0.3 0.4 ; do
+      
       cd $w
 
-      current_dir=$(pwd)
-
-      echo "current working dir:  $current_dir"
+      echo "current working dir: $(pwd)"
       echo "  $(date "+%Y-%m-%d %H:%M:%S") MD MINIMIZATION"
       mpirun -np 8 pmemd.MPI -i min.in -c ti.rst7 -ref ti.rst7 -p ti.parm7 -O -o min.out -inf min.info  -r min.rst7 -l min.log
       echo "  $(date "+%Y-%m-%d %H:%M:%S") MD HEAT "

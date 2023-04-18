@@ -60,6 +60,7 @@ done
 
 # run MD (apply restraint)
 for w in 0.0 0.01 0.025 0.05 0.075 0.1 0.15 0.2 0.35 0.5 0.75 1.0; do
+  
   cd $w
   
   echo "Current Working Window: adding restriant $w"

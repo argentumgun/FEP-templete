@@ -43,11 +43,10 @@ for w in 0.0 0.01 0.025 0.05 0.075 0.1 0.15 0.2 0.3 0.4 0.5 0.6 0.65 0.7 0.75 0.
 done
 
 for w in 0.0 0.01 0.025 0.05 0.075 0.1 0.15 0.2 0.3 0.4 0.5 0.6 0.65 0.7 0.75 0.8 0.85 0.9 0.95 1.0; do
+  
   cd $w
-
-  current_dir=$(pwd)
-
-  echo " $(date "+%Y-%m-%d %H:%M:%S") current working dir:  $current_dir"
+  
+  echo " $(date "+%Y-%m-%d %H:%M:%S") current working dir: $(pwd)"
 
   echo " $(date "+%Y-%m-%d %H:%M:%S") MINIMIZATION"
   mpirun -np 4 pmemd.MPI -i min.in -c ti.rst7 -ref ti.rst7 -p ti.parm7 -O -o min.out -inf min.info -r min.rst7 -l min.log
