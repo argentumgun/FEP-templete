@@ -1,0 +1,17 @@
+parm ../../init_structure/complex.parm7
+trajin ./*/ti001.nc
+
+autoimage
+
+list parm
+list trajin
+
+distance Distance %A% %a% out Distance.dat
+angle Angle_P %B% %A% %a% out Angle_P.dat
+angle Angle_L %A% %a% %b% out Angle_L.dat
+dihedral Dihedral_P %C% %B% %A% %a%  out Dihedral_P.dat
+dihedral Dihedral_M %B% %A% %a% %b%  out Dihedral_M.dat
+dihedral Dihedral_L %A% %a% %b% %c%  out Dihedral_L.dat
+list actions
+run
+quit

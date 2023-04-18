@@ -14,6 +14,14 @@ k_dist=10
 k_ang=100
 k_rotate=100
 
+# anchor atom set, extract 6DOFs
+ATOM_C=':48@C'
+ATOM_B=':48@CA'
+ATOM_A=':48@CB' 
+ATOM_a=':1@C21'
+ATOM_b=':1@N7'
+ATOM_c=':1@C7'
+
 complex_part="complex_${round_NO}_${k_dist}_${k_ang}_${k_rotate}"
 
 cd $complex_part/restraint
@@ -35,28 +43,6 @@ for w in 0.0 0.01 0.025 0.05 0.075 0.1 0.15 0.2 0.35 0.5 0.75 1.0; do
   cd ..
 done
 
-cd ..
-# create_postprocessing
+sed  -e "s/%A%/$ATOM_A/g" -e "s/%B%/$ATOM_B/g" -e "s/%C%/$ATOM_C/g" -e "s/%a%/$ATOM_a/g" -e "s/%b%/$ATOM_b/g" -e "s/%c%/$ATOM_c/g" $top/cpptraj_protocol/extract_boresch_restraint.tmpl > extract_6DOFs.cpptraj
 
-if [ \! -d post_processing ]; then
-    mkdir post_processing
-fi
-
-cd post_processing
-
-# image traj
-cpptraj -i ${top}/cpptraj_protocol/autoimage_restraint_traj.cpptraj
-
-# restraint weight state w
-sed -e "s/%D%/${k_dist}/g" -e "s/%A%/${k_ang}/g" -e "s/%T%/${k_rotate}/g"  $top/init_structure/Boresch_restraint.tmpl > dist_angel_dihedral.RST
-  
-ln -sf $top/init_structure/complex.parm7 ti.parm7
-ln -sf $top/init_structure/restraint_reference.rst7 restraint_reference.rst7
-ln -sf $top/md_protocol/restraint_mbar_in.tmpl mbar.in
-
-echo " $(date "+%Y-%m-%d %H:%M:%S") Calaulate all samples in MBAR state lambda = 1.0"
-
-mpirun -np 8 sander.MPI -i mbar.in -O -o mbar_state_1.0.out -p ti.parm7 -c restraint_reference.rst7 -y restraint_imaged.nc
-
-# delete atuoimage traj
-rm restraint_imaged.nc
+cpptraj -i extract_6DOFs.cpptraj > extract_6DOFs.log
