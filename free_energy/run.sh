@@ -1,10 +1,18 @@
 #!/bin/bash
 
 # Run script1.sh
-nohup sh ./01_restraint.sh > logs/restraint.log 2>&1 &
-# Wait for 5 seconds
-sleep 10
+nohup sh ./script/01_set_up.sh > logs/01_set_up.log 2>&1 &
 
-nohup sh ./03_complex_vdw_crg.sh > logs/complex_01.log 2>&1 &
-nohup sh ./04_complex_0.5.sh > logs/complex_02.log 2>&1 &
-nohup sh ./08_ligand.sh > logs/ligands.log 2>&1 &
+sleep 20
+
+nohup sh ./script/02_restraint_minization.sh > logs/02_restraint_minization.log 2>&1 &
+nohup sh ./script/03_complex_0.0_minimization.sh > logs/03_complex_0.0_minimization.log 2>&1 &
+nohup sh ./script/04_complex_0.5_minimization.sh > logs/04_complex_0.5_minimization.log 2>&1 &
+nohup sh ./script/05_ligand_minimization.sh > logs/05_ligand_minimization.log 2>&1 &
+
+sleep 1000
+
+nohup sh ./script/06_restraint_pmemd.sh > logs/06_restraint_pmemd.log 2>&1 &
+nohup sh ./script/07_complex_0.0_pmemd.sh > logs/07_complex_0.0_pmemd.log 2>&1 &
+nohup sh ./script/08_complex_0.5_pmemd.sh > logs/08_complex_0.5_pmemd.log 2>&1 &
+nohup sh ./script/09_ligand_pmemd.sh > logs/09_ligand_pmemd.log 2>&1 &
