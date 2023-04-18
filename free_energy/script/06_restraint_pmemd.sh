@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "RUN ADDING RESTRAINT STEP"
+echo "RUN ADDING RESTRAINT"
 
 export CUDA_VISIBLE_DEVICES='0'
 
@@ -24,8 +24,7 @@ for w in 0.0 0.01 0.025 0.05 0.075 0.1 0.15 0.2 0.35 0.5 0.75 1.0; do
   cd $w
   
   echo "Current Working Window: adding restriant $w"
-  # echo " $(date "+%Y-%m-%d %H:%M:%S") minimization"
-  # $mpirun pmemd.MPI -i min.in -c ti.rst7 -ref ti.rst7 -p ti.parm7 -O -o min.out -inf min.info -r min.rst7 -l min.log
+
   echo " $(date "+%Y-%m-%d %H:%M:%S") heating"
   pmemd.cuda -i heat.in -c min.rst7 -ref ti.rst7 -p ti.parm7 -O -o heat.out -inf heat.info -r heat.rst7 -x heat.nc -l heat.log
   echo " $(date "+%Y-%m-%d %H:%M:%S") prep"
