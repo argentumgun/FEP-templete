@@ -2,10 +2,7 @@
 
 echo "SETING LIGAND ALCHEMICAL 0.0-1.0 20 WINDOW"
 
-export CUDA_VISIBLE_DEVICES='1'
-
 top=$(pwd)
-mdrun="pmemd.cuda"
 
 # repate number
 round_NO=1

@@ -2,12 +2,6 @@
 
 echo "COMPELX ALCHEMICAL SETP 0.5-1.0 10 WINDOW"
 
-export CUDA_VISIBLE_DEVICES='1'
-
-mdrun="pmemd.cuda"
-
-top=$(pwd)
-
 # repate number
 round_NO=1
 
