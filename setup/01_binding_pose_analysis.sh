@@ -34,10 +34,10 @@ for pose in 1; do
     ligand="mod3_2_gv"
     echo "binding ligand : $ligand"
 
-    # retain ligand coordinate
-    # echo "$(date "+%Y-%m-%d %H:%M:%S") antechamber: convert ligand atom name to gcrt mode"
-    # antechamber -i $top/binding_pose_dir/$ligand.pdb -fi pdb -o lig.com -fo gcrt
-    # antechamber -i lig.com -fi gcrt -o lig.pdb -fo pdb
+    retain ligand coordinate
+    echo "$(date "+%Y-%m-%d %H:%M:%S") antechamber: convert ligand atom name to gcrt mode"
+    antechamber -i $top/binding_pose_dir/$ligand.pdb -fi pdb -o lig.com -fo gcrt
+    antechamber -i lig.com -fi gcrt -o lig.pdb -fo pdb
 
     echo "$(date "+%Y-%m-%d %H:%M:%S") GAUSS start"
     cp $top/binding_pose_dir/$ligand.gjf .
