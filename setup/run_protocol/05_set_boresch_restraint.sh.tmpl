@@ -6,12 +6,12 @@ pose=1
 system_restraint='Boresch_restraint_frame_'
 
 # anchor atom
-ATOM_C=':48@C'
-ATOM_B=':48@CA'
-ATOM_A=':48@CB' 
-ATOM_a=':1@C21'
-ATOM_b=':1@N7'
-ATOM_c=':1@C7'
+ATOM_C='%PC%'
+ATOM_B='%PB%'
+ATOM_A='%PA%'
+ATOM_a='%La%'
+ATOM_b='%Lb%'
+ATOM_c='%Lc%'
 
 if [ \! -d ${top}/binding_pose_MD/${pose}/analysis/Select_Reference_Frame ]; then
     mkdir ${top}/binding_pose_MD/${pose}/analysis/Select_Reference_Frame
