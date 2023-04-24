@@ -128,6 +128,7 @@ for pose in 1; do
         
     done
 
+    #将文件重新编号，防止cpptraj读取文件时将文件顺序打乱
     echo "rename prod_file"
 
     for file in prod_*; do
