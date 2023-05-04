@@ -5,7 +5,7 @@ reference ../01_minimization.rst7
 
 autoimage
 
-hbond contacts :1-332 avgout avg.dat series uuseries hbond.gnu nointramol
+hbond contacts :1-332 dist 3.5 avgout avg.dat series uuseries hbond.gnu nointramol
 go
 
 lifetime contacts[solutehb] out contacts-lifetime.dat
