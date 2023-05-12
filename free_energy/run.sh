@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Run script1.sh
 echo "SET UP"
 nohup sh ./script/01_set_up.sh > logs/01_set_up.log 2>&1 &
 
