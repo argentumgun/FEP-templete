@@ -22,7 +22,7 @@ rms loop_rmsd :27-35&!@H= reference out rmsd_loop.agr mass
 
 rms phe :32&!@H= reference out RMSD_PHE.agr mass
 
-rms rmsd_protein :2-332@CA,N,C reference out PROTEIN.agr mass
+rms rmsd_protein :21-332@CA,N,C reference out PROTEIN.agr mass
 
 go
 
