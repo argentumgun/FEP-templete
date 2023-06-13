@@ -121,7 +121,6 @@ for pose in 1; do
         echo "$(date "+%Y-%m-%d %H:%M:%S") MD PRODUCTION : $cnt  ${istep}"
         echo "set prod_run:::  pcnt =  $pcnt  istep =  $istep  psetp = $pstep"
 
-
         pmemd.cuda -O -i $top/run_protocol/03_production.mdin -p complex.parm7 -c ${pstep}.rst7 -ref complex.rst7 -o ${istep}.mdout -r ${istep}.rst7 -inf ${istep}.mdinfo -x ${istep}.nc
 
         let cnt+=1;
