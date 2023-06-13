@@ -44,7 +44,7 @@ for pose in 1; do
     echo "$(date "+%Y-%m-%d %H:%M:%S") GAUSS start"
     cp $top/binding_pose_dir/$ligand.gjf .
     g16 $ligand.gjf
-    
+
     #antechamber -i $top/binding_pose_dir/$ligand -fi pdb -o lig.com -fo gcrt
     echo "$(date "+%Y-%m-%d %H:%M:%S") antechamber: ligang parameter"
     antechamber -i $ligand.log -fi gout -o lig.mol2 -fo mol2 -c bcc -at gaff2
@@ -59,6 +59,7 @@ for pose in 1; do
         mkdir ./$pose
         echo "making md run folder for binding pose ${pose} "
     fi
+    
     cd ./$pose
 
     cp $top/init/$pose/*.parm7 .
