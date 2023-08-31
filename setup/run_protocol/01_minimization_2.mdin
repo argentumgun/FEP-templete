@@ -15,15 +15,11 @@ Minimization input file in explicit solvent
     ! Restraint options
     ntr=1,         ! Positional restraints for proteins, sugars, and ligands
     restraint_wt=10.0,
-    restraintmask=':1-332',
+    restraintmask='@CA,N,C',
 
     ! Set water atom/residue names for SETTLE recognition
     watnam='WAT',  ! Water residues are named WAT
     owtnm='O',     ! Water oxygens are named O
  /
-Protein posres
-1.0
-RES 1 332
-END
-END
+
 

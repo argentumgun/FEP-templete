@@ -65,11 +65,14 @@ for pose in 1; do
     cp $top/init/$pose/*.parm7 .
     cp $top/init/$pose/*.rst7 .
 
-    echo "$(date "+%Y-%m-%d %H:%M:%S") MD MINIMIZATION "
-    mpirun -np 16 $mdrun -O -i $top/run_protocol/01_minimization.mdin -p complex.parm7 -c complex.rst7 -ref complex.rst7 -o 01_minimization.mdout -r 01_minimization.rst7 -inf 01_minimization.mdinfo
+    echo "$(date "+%Y-%m-%d %H:%M:%S") MD MINIMIZATION 1: solution and ions"
+    mpirun -np 16 $mdrun -O -i $top/run_protocol/01_minimization_1.mdin -p complex.parm7 -c complex.rst7 -ref complex.rst7 -o 01_minimization.mdout -r 01_minimization.rst7 -inf 01_minimization.mdinfo
+
+    echo "$(date "+%Y-%m-%d %H:%M:%S") MD MINIMIZATION 2: ligand and sidechains"
+    mpirun -np 16 $mdrun -O -i $top/run_protocol/01_minimization_2.mdin -p complex.parm7 -c 01_minimization.rst7 -ref 01_minimization.rst7 -o 02_minimization.mdout -r 02_minimization.rst7 -inf 02_minimization.mdinfo
 
     echo "$(date "+%Y-%m-%d %H:%M:%S") MD EQUILIBRATION "
-    pmemd.cuda -O -i $top/run_protocol/02_equilibration.mdin -p complex.parm7 -c 01_minimization.rst7 -ref complex.rst7 -o 02_equilibration.mdout -r 02_equilibration.rst7 -inf 02_equilibration.mdinfo -x 02_equilibration.nc
+    pmemd.cuda -O -i $top/run_protocol/02_equilibration.mdin -p complex.parm7 -c 01_minimization.rst7 -ref 02_minimization.rst7 -o 02_equilibration.mdout -r 02_equilibration.rst7 -inf 02_equilibration.mdinfo -x 02_equilibration.nc
 
     # echo "starting 1_min_1 at $(date "+%Y-%m-%d %H:%M:%S")"
     # mpirun -np 8 pmemd.MPI -O -i $top/run_protocol/new_md_protocol/1_min_1.in -o 1min.out -p complex.parm7 -c complex.rst7 -r 1_min_1.rst7 -inf 1_min_1.info -ref complex.rst7 -x 1_min_1.mdcrd

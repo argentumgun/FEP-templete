@@ -14,8 +14,8 @@ A NVT simulation for common production-level simulations
     cut=9.0,       ! nonbonded cutoff, in Angstroms
 
     ! MD settings
-    nstlim=50000,  ! 50K steps, 50 ps total
-    dt=0.001,      ! time step (ps)
+    nstlim=100000,  ! 100K steps, 100 ps total
+    dt=0.001,       ! time step (ps)
 
     ! SHAKE
     ntc=2,         ! Constrain bonds containing hydrogen
@@ -35,16 +35,12 @@ A NVT simulation for common production-level simulations
 
     ! Restraint options
     ntr=1,         ! Positional restraints for proteins, sugars, and ligands
-    restraint_wt=0.1,
+    restraint_wt = 1,
     restraintmask=':1-332',
 
     ! Set water atom/residue names for SETTLE recognition
     watnam='WAT',  ! Water residues are named WAT
     owtnm='O',     ! Water oxygens are named O
  /
-Protein posres
-1.0
-RES 1 332
-END
-END
+
 
